@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.hd.seekwidget.FontSizeSeekBar
+        android:id="@+id/fsv_font_size"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/colorWhite"
+        app:seekbar.defaultPointsId="2"
+        app:seekbar.pointList="@array/default_font_size_seek_bar_point"
+        app:seekbar.pointPaintColor="#898C9A"
+        app:seekbar.pointSelect="@drawable/ic_fssb_point_select_default"
+        app:seekbar.pointStrokeWidth="0dp"
+        app:seekbar.pointTextSize="12sp"
+        app:seekbar.pointUnSelect="@drawable/ic_fssb_point_un_select_default"
+        app:seekbar.progressSelectColor="#EEF0F4"
+        app:seekbar.progressStrokeWidth="14.5dp"
+        app:seekbar.progressUnSelectColor="#F8F9FA"
+        app:seekbar.thumb="@drawable/ic_seek_thumb"
+        app:seekbar.thumbPadding="3.5dp"
+        app:seekbar.thumbRadius="21dp" />
+</LinearLayout>

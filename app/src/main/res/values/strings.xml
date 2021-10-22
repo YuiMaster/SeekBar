@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SeekWidget</string>
+
+
+    <string-array name="default_font_size_seek_bar_point">
+        <item>小</item>
+        <item>较小</item>
+        <item>默认</item>
+        <item>较大</item>
+        <item>大</item>
+    </string-array>
+</resources>

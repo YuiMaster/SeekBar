@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 字体大小调整 FontSizeSeekBar-->
+    <declare-styleable name="FontSizeSeekBar">
+        <!-- Progress:颜色：未选中 -->
+        <attr name="seekbar.progressUnSelectColor" format="color|reference" />
+        <!-- Progress:颜色：选中 -->
+        <attr name="seekbar.progressSelectColor" format="color|reference" />
+        <!-- Progress:画笔宽度 -->
+        <attr name="seekbar.progressStrokeWidth" format="dimension" />
+
+        <!-- 滑块：半径 -->
+        <attr name="seekbar.thumbRadius" format="dimension" />
+        <!-- 滑块:画笔颜色 -->
+        <attr name="seekbar.thumbPaintColor" format="color|reference" />
+        <!-- 滑块:图片 -->
+        <attr name="seekbar.thumb" format="reference" />
+        <!-- 滑块:透明区域距离 -->
+        <attr name="seekbar.thumbPadding" format="dimension" />
+
+        <!-- 刻度：画笔宽度 -->
+        <attr name="seekbar.pointStrokeWidth" format="dimension" />
+        <attr name="seekbar.pointSelect" format="reference" />
+        <attr name="seekbar.pointUnSelect" format="reference" />
+        <attr name="seekbar.pointPaintColor" format="color|reference" />
+        <attr name="seekbar.pointList" format="reference" />
+        <attr name="seekbar.pointTextSize" format="dimension|reference" />
+
+        <!-- 默认选中的Id -->
+        <attr name="seekbar.defaultPointsId" format="integer" />
+    </declare-styleable>
+</resources>
