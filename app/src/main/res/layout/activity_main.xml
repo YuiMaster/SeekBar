@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -14,7 +15,6 @@
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@color/colorWhite"
         app:seekbar.defaultPointsId="2"
         app:seekbar.pointList="@array/default_font_size_seek_bar_point"
         app:seekbar.pointPaintColor="#898C9A"
@@ -28,4 +28,25 @@
         app:seekbar.thumb="@drawable/ic_seek_thumb"
         app:seekbar.thumbPadding="3.5dp"
         app:seekbar.thumbRadius="21dp" />
+
+
+    <com.hd.seekwidget.ScrollSpeedSeekBar
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:scrollSpeed.defaultPointsId="0"
+        app:scrollSpeed.pointList="@array/default_scroll_speed"
+        app:scrollSpeed.pointPaintColor="#898C9A"
+        app:scrollSpeed.pointSelect="@drawable/ic_fssb_point_select_default"
+        app:scrollSpeed.pointStrokeWidth="0dp"
+        app:scrollSpeed.pointTextSize="12sp"
+        app:scrollSpeed.pointUnSelect="@drawable/ic_fssb_point_un_select_default"
+        app:scrollSpeed.progressSelectColor="#EEF0F4"
+        app:scrollSpeed.progressStrokeWidth="14.5dp"
+        app:scrollSpeed.progressUnSelectColor="#F8F9FA"
+        app:scrollSpeed.thumb="@drawable/ic_seek_thumb"
+        app:scrollSpeed.thumbPadding="3.5dp"
+        app:scrollSpeed.thumbRadius="21dp" />
 </LinearLayout>

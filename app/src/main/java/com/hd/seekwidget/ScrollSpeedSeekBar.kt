@@ -13,11 +13,11 @@ import kotlin.math.abs
 
 
 /**
- * 字体大小调整
+ * 滚动速度
  * 自定义属性
  * @see R.styleable.FontSizeSeekBar
  */
-class FontSizeSeekBar(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
+class ScrollSpeedSeekBar(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
 
     // 一共有多少格
     private var mMaxCount = 4
@@ -75,7 +75,7 @@ class FontSizeSeekBar(context: Context, attrs: AttributeSet? = null) : View(cont
         mPointSelectBitmap =
             (Objects.requireNonNull(ContextCompat.getDrawable(context, R.drawable.ic_fssb_point_select_default)) as BitmapDrawable).bitmap
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.FontSizeSeekBar)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ScrollSpeedSeekBar)
         val arraySize = typedArray.indexCount
         for (i in 0 until arraySize) {
             initCustomAttr(typedArray.getIndex(i), typedArray)
@@ -108,54 +108,54 @@ class FontSizeSeekBar(context: Context, attrs: AttributeSet? = null) : View(cont
     private fun initCustomAttr(attr: Int, typedArray: TypedArray) {
         when (attr) {
             // progress
-            R.styleable.FontSizeSeekBar_seekbar_progressUnSelectColor -> {
+            R.styleable.ScrollSpeedSeekBar_scrollSpeed_progressUnSelectColor -> {
                 mProgressUnSelectColor = typedArray.getColor(attr, Color.rgb(33, 33, 33))
             }
-            R.styleable.FontSizeSeekBar_seekbar_progressSelectColor -> {
+            R.styleable.ScrollSpeedSeekBar_scrollSpeed_progressSelectColor -> {
                 mProgressSelectColor = typedArray.getColor(attr, Color.rgb(33, 33, 33))
             }
-            R.styleable.FontSizeSeekBar_seekbar_progressStrokeWidth -> {
+            R.styleable.ScrollSpeedSeekBar_scrollSpeed_progressStrokeWidth -> {
                 mProgressPaintStrokeWidth = typedArray.getDimensionPixelSize(attr, DensityUtil.dp2px(context, 10f)).toFloat()
             }
 
             // thumb
-            R.styleable.FontSizeSeekBar_seekbar_thumb -> {
+            R.styleable.ScrollSpeedSeekBar_scrollSpeed_thumb -> {
                 mThumbBitmap =
                     (Objects.requireNonNull(ContextCompat.getDrawable(context, typedArray.getResourceId(attr, R.drawable.ic_fssb_thumb_default))) as BitmapDrawable).bitmap
             }
-            R.styleable.FontSizeSeekBar_seekbar_thumbPaintColor -> {
+            R.styleable.ScrollSpeedSeekBar_scrollSpeed_thumbPaintColor -> {
                 mThumbColor = typedArray.getColor(attr, Color.WHITE)
             }
-            R.styleable.FontSizeSeekBar_seekbar_thumbRadius -> {
+            R.styleable.ScrollSpeedSeekBar_scrollSpeed_thumbRadius -> {
                 mThumbRadius = typedArray.getDimensionPixelSize(attr, DensityUtil.dp2px(context, 17f))
             }
-            R.styleable.FontSizeSeekBar_seekbar_thumbPadding -> {
+            R.styleable.ScrollSpeedSeekBar_scrollSpeed_thumbPadding -> {
                 mThumbPadding = typedArray.getDimensionPixelSize(attr, DensityUtil.dp2px(context, 7f)).toFloat()
             }
 
             // point
-            R.styleable.FontSizeSeekBar_seekbar_defaultPointsId -> {
+            R.styleable.ScrollSpeedSeekBar_scrollSpeed_defaultPointsId -> {
                 mDefaultPointsId = typedArray.getInteger(attr, mDefaultPointsId)
             }
             // point
-            R.styleable.FontSizeSeekBar_seekbar_pointSelect -> {
+            R.styleable.ScrollSpeedSeekBar_scrollSpeed_pointSelect -> {
                 mPointSelectBitmap =
                     (Objects.requireNonNull(ContextCompat.getDrawable(context, typedArray.getResourceId(attr, R.drawable.ic_fssb_point_select_default))) as BitmapDrawable).bitmap
             }
-            R.styleable.FontSizeSeekBar_seekbar_pointUnSelect -> {
+            R.styleable.ScrollSpeedSeekBar_scrollSpeed_pointUnSelect -> {
                 mPointUnSelectBitmap =
                     (Objects.requireNonNull(ContextCompat.getDrawable(context, typedArray.getResourceId(attr, R.drawable.ic_fssb_point_un_select_default))) as BitmapDrawable).bitmap
             }
-            R.styleable.FontSizeSeekBar_seekbar_pointStrokeWidth -> {
+            R.styleable.ScrollSpeedSeekBar_scrollSpeed_pointStrokeWidth -> {
                 mPointPaintStrokeWidth = typedArray.getDimensionPixelSize(attr, DensityUtil.dp2px(context, 10f)).toFloat()
             }
-            R.styleable.FontSizeSeekBar_seekbar_pointPaintColor -> {
+            R.styleable.ScrollSpeedSeekBar_scrollSpeed_pointPaintColor -> {
                 mPointPaintColor = typedArray.getColor(attr, Color.WHITE)
             }
-            R.styleable.FontSizeSeekBar_seekbar_pointList -> {
+            R.styleable.ScrollSpeedSeekBar_scrollSpeed_pointList -> {
                 mPointArray = resources.getStringArray(typedArray.getResourceId(attr, R.array.default_font_size_seek_bar_point))
             }
-            R.styleable.FontSizeSeekBar_seekbar_pointTextSize -> {
+            R.styleable.ScrollSpeedSeekBar_scrollSpeed_pointTextSize -> {
                 mPointPaintTextSize = typedArray.getDimensionPixelSize(attr, DensityUtil.dp2px(context, 12f))
             }
         }
@@ -207,18 +207,13 @@ class FontSizeSeekBar(context: Context, attrs: AttributeSet? = null) : View(cont
         val progressTop = mViewHeight / 2f - radius
         val progressBottom = mViewHeight / 2f + radius
 
-        // 右边
-        if (mCurrentPointId < mMaxCount) {
-            canvas.drawRoundRect(
-                mCurrentX, progressTop, mViewWidth.toFloat(), progressBottom, radius, radius, mProgressUnSelectPaint
-            )
-            // 补上尾部
-            canvas.drawRect(
-                mCurrentX, progressTop, mCurrentX + radius, progressBottom, mProgressUnSelectPaint
-            )
-        }
-        // 左边
-        if (mCurrentPointId > 0) {
+        canvas.drawRoundRect(
+            mPointList[0].x.toFloat() - mProgressPaintStrokeWidth, progressTop, mViewWidth.toFloat(), progressBottom, radius, radius, mProgressUnSelectPaint
+        )
+
+//        LOG.d("", "补上尾部")
+        if (mCurrentX > radius + mProgressPaintStrokeWidth) {
+            // 左边
             canvas.drawRoundRect(
                 mPointList[0].x.toFloat() - mProgressPaintStrokeWidth, progressTop, mCurrentX, progressBottom, radius, radius, mProgressSelectPaint
             )
@@ -246,7 +241,7 @@ class FontSizeSeekBar(context: Context, attrs: AttributeSet? = null) : View(cont
             MotionEvent.ACTION_DOWN -> invalidate()
             MotionEvent.ACTION_UP, MotionEvent.ACTION_MOVE -> {
                 invalidate()
-                backNearestPoint()
+//                backNearestPoint()
             }
             else -> {
             }

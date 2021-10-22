@@ -30,4 +30,35 @@
         <!-- 默认选中的Id -->
         <attr name="seekbar.defaultPointsId" format="integer" />
     </declare-styleable>
+
+
+    <!-- 滚动速度 seekbar ScrollSpeedSeekBar-->
+    <declare-styleable name="ScrollSpeedSeekBar">
+        <!-- Progress:颜色：未选中 -->
+        <attr name="scrollSpeed.progressUnSelectColor" format="color|reference" />
+        <!-- Progress:颜色：选中 -->
+        <attr name="scrollSpeed.progressSelectColor" format="color|reference" />
+        <!-- Progress:画笔宽度 -->
+        <attr name="scrollSpeed.progressStrokeWidth" format="dimension" />
+
+        <!-- 滑块：半径 -->
+        <attr name="scrollSpeed.thumbRadius" format="dimension" />
+        <!-- 滑块:画笔颜色 -->
+        <attr name="scrollSpeed.thumbPaintColor" format="color|reference" />
+        <!-- 滑块:图片 -->
+        <attr name="scrollSpeed.thumb" format="reference" />
+        <!-- 滑块:透明区域距离 -->
+        <attr name="scrollSpeed.thumbPadding" format="dimension" />
+
+        <!-- 刻度：画笔宽度 -->
+        <attr name="scrollSpeed.pointStrokeWidth" format="dimension" />
+        <attr name="scrollSpeed.pointSelect" format="reference" />
+        <attr name="scrollSpeed.pointUnSelect" format="reference" />
+        <attr name="scrollSpeed.pointPaintColor" format="color|reference" />
+        <attr name="scrollSpeed.pointList" format="reference" />
+        <attr name="scrollSpeed.pointTextSize" format="dimension|reference" />
+
+        <!-- 默认选中的Id -->
+        <attr name="scrollSpeed.defaultPointsId" format="integer" />
+    </declare-styleable>
 </resources>
