@@ -25,7 +25,7 @@
         app:seekbar.progressSelectColor="#EEF0F4"
         app:seekbar.progressStrokeWidth="14.5dp"
         app:seekbar.progressUnSelectColor="#F8F9FA"
-        app:seekbar.thumb="@drawable/ic_seek_thumb"
+        app:seekbar.thumb="@drawable/ic_fssb_seek_thumb"
         app:seekbar.thumbPadding="3.5dp"
         app:seekbar.thumbRadius="21dp" />
 
@@ -46,7 +46,7 @@
         app:scrollSpeed.progressSelectColor="#EEF0F4"
         app:scrollSpeed.progressStrokeWidth="14.5dp"
         app:scrollSpeed.progressUnSelectColor="#F8F9FA"
-        app:scrollSpeed.thumb="@drawable/ic_seek_thumb"
+        app:scrollSpeed.thumb="@drawable/ic_fssb_seek_thumb"
         app:scrollSpeed.thumbPadding="3.5dp"
         app:scrollSpeed.thumbRadius="21dp" />
 </LinearLayout>

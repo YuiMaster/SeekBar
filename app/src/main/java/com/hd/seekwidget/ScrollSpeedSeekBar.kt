@@ -17,7 +17,7 @@ import kotlin.math.abs
  * 自定义属性
  * @see R.styleable.FontSizeSeekBar
  */
-class ScrollSpeedSeekBar(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
+class ScrollSpeedSeekBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
 
     // 一共有多少格
     private var mMaxCount = 4
@@ -69,7 +69,7 @@ class ScrollSpeedSeekBar(context: Context, attrs: AttributeSet? = null) : View(c
     init {
         LOG.d("init", " start ")
         DP_1 = DensityUtil.dp2pxf(1f)
-        mThumbBitmap = (Objects.requireNonNull(ContextCompat.getDrawable(context, R.drawable.ic_seek_thumb)) as BitmapDrawable).bitmap
+        mThumbBitmap = (Objects.requireNonNull(ContextCompat.getDrawable(context, R.drawable.ic_fssb_seek_thumb)) as BitmapDrawable).bitmap
         mPointUnSelectBitmap =
             (Objects.requireNonNull(ContextCompat.getDrawable(context, R.drawable.ic_fssb_point_un_select_default)) as BitmapDrawable).bitmap
         mPointSelectBitmap =
